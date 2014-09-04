@@ -29,7 +29,7 @@ frmcheck
 
 
 채크 옵션도 추가 가능
-  chk="idcheck"  // 아이디
-  chk="email"    // 이메일
-  chk="number"   // 숫자
-  chk="eng"      // 영문
+    chk="idcheck"  // 아이디
+    chk="email"    // 이메일
+    chk="number"   // 숫자
+    chk="eng"      // 영문
