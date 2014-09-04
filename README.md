@@ -25,10 +25,12 @@ frmcheck
 
 
 글자수 제한 가능
+<input type="text" name="name" title="이름" txtlimit='4' chk="eng">
   txtlimit='n'  // n 은 숫자
 
 
 채크 옵션도 추가 가능
+<input type="text" name="name" title="이름" txtlimit='4' chk="eng">
     chk="idcheck"  // 아이디
     chk="email"    // 이메일
     chk="number"   // 숫자
