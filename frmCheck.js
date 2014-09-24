@@ -37,13 +37,13 @@ function frmCheck(nv){
 
             if(inputType=="radio"){
                  if(!$(":radio[name="+nameVal[x]+"]:checked").val()){
-                    alert(inputText+"를(을) 채크해주세요");
+                    alert(inputText+"를(을) 체크해주세요");
                     return false;
                  }
 
             }else if(inputType=="checkbox"){
                 if($("input:checkbox[name="+nameVal[x]+"]").is(":checked") != true ){
-                    alert(inputText+"를(을) 채크해주세요");
+                    alert(inputText+"를(을) 체크해주세요");
                     return false;
                 }
                 /// 값가져오기 $('input:checkbox [ id="checkbox_id" ]').val();
