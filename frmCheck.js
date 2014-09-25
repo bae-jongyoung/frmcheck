@@ -35,6 +35,11 @@ function frmCheck(nv){
         inputType = inputName[x].attr('type');
         inputChks = inputName[x].attr('chk');
 
+			if (inputText=='' || inputText==undefined){
+				//title 이 없는 경우 name 으로 대치
+				inputText = nameVal[x];
+			}
+
             if(inputType=="radio"){
                  if(!$(":radio[name="+nameVal[x]+"]:checked").val()){
                     alert(inputText+"를(을) 체크해주세요");
