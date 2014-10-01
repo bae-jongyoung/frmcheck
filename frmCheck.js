@@ -1,8 +1,8 @@
 /*
  * form Check v1.0
  * use: onsubmit="return frmCheck('name,name2');"
- * Á¦ÀÌÄõ¸® 1.x.x ¹öÀüÀÌ ÇÊ¿äÇÕ´Ï´Ù.
- * codding: 2014-07-23 bae jongyoung
+ * ì œì´ì¿¼ë¦¬ 1.x.x ë²„ì „ì´ í•„ìš”í•©ë‹ˆë‹¤.
+ * coding: 2014-07-23 bae jongyoung
  */
 /// onsubmit="return frmCheck('name,name2');"
 function frmCheck(nv){
@@ -36,35 +36,35 @@ function frmCheck(nv){
         inputChks = inputName[x].attr('chk');
 
 			if (inputText=='' || inputText==undefined){
-				//title ÀÌ ¾ø´Â °æ¿ì name À¸·Î ´ëÄ¡
+				//title ì´ ì—†ëŠ” ê²½ìš° name ìœ¼ë¡œ ëŒ€ì¹˜
 				inputText = nameVal[x];
 			}
 
             if(inputType=="radio"){
                  if(!$(":radio[name="+nameVal[x]+"]:checked").val()){
-                    alert(inputText+"¸¦(À») Ã¼Å©ÇØÁÖ¼¼¿ä");
+                    alert(inputText+"ë¥¼(ì„) ì²´í¬í•´ì£¼ì„¸ìš”");
                     return false;
                  }
 
             }else if(inputType=="checkbox"){
                 if($("input:checkbox[name="+nameVal[x]+"]").is(":checked") != true ){
-                    alert(inputText+"¸¦(À») Ã¼Å©ÇØÁÖ¼¼¿ä");
+                    alert(inputText+"ë¥¼(ì„) ì²´í¬í•´ì£¼ì„¸ìš”");
                     return false;
                 }
-                /// °ª°¡Á®¿À±â $('input:checkbox [ id="checkbox_id" ]').val();
+                /// ê°’ê°€ì ¸ì˜¤ê¸° $('input:checkbox [ id="checkbox_id" ]').val();
 
             }else if(inputType=="text"){
 
                 inputValu = inputName[x].val();
                 if(!inputValu ){
-                        alert(inputText+"¸¦(À») ÀÔ·ÂÇØÁÖ¼¼¿ä");
+                        alert(inputText+"ë¥¼(ì„) ì…ë ¥í•´ì£¼ì„¸ìš”");
                         inputName[x].focus();
                        return false;
                 }else{
                     if(thislimit){ ///txtlimit='n'
                         var valcnt = inputValu.length;
                         if(thislimit > valcnt){
-                                alert(inputText+"ÀÇ ±ÛÀÚ ¼ö°¡ ÀÛ½À´Ï´Ù.");
+                                alert(inputText+"ì˜ ê¸€ì ìˆ˜ê°€ ì‘ìŠµë‹ˆë‹¤.");
                                 inputName[x].focus();
                                 return false;
                         }
@@ -74,13 +74,13 @@ function frmCheck(nv){
 				if(inputChks){
 					if(inputChks=="idcheck"){
 						  if(inputValu < 5 || inputValu > 15) {
-							 alert("¾ÆÀÌµğ´Â 5 ~ 15ÀÚÀÇ ¿µ¹® ¼Ò¹®ÀÚ³ª ¼ıÀÚ ¶Ç´Â Á¶ÇÕµÈ ¹®ÀÚ¿­ÀÌ¾î¾ß ÇÕ´Ï´Ù!");
+							 alert("ì•„ì´ë””ëŠ” 5 ~ 15ìì˜ ì˜ë¬¸ ì†Œë¬¸ìë‚˜ ìˆ«ì ë˜ëŠ” ì¡°í•©ëœ ë¬¸ìì—´ì´ì–´ì•¼ í•©ë‹ˆë‹¤!");
 							 return false;
 						  }
 						  for(var i = 0; i < inputValu.length; i++) {
 							 var chr = inputValu.substr(i,1);
 							 if((chr < '0' || chr > '9') && (chr < 'a' || chr > 'z')) {
-								alert("¾ÆÀÌµğ´Â ¿µ¹® ¼Ò¹®ÀÚ³ª ¼ıÀÚ ¶Ç´Â Á¶ÇÕµÈ ¹®ÀÚ¿­ÀÌ¾î¾ß ÇÕ´Ï´Ù!");
+								alert("ì•„ì´ë””ëŠ” ì˜ë¬¸ ì†Œë¬¸ìë‚˜ ìˆ«ì ë˜ëŠ” ì¡°í•©ëœ ë¬¸ìì—´ì´ì–´ì•¼ í•©ë‹ˆë‹¤!");
 								return false;
 							 }
 
@@ -89,7 +89,7 @@ function frmCheck(nv){
 					if(inputChks=="email"){
 					    var EmailChkExp = /([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
 						if(!EmailChkExp.test(inputName[x].val())) {
-							alert('ÀÌ¸ŞÀÏ ÁÖ¼Ò°¡ À¯È¿ÇÏÁö ¾Ê½À´Ï´Ù');
+							alert('ì´ë©”ì¼ ì£¼ì†Œê°€ ìœ íš¨í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤');
 								inputName[x].focus();
 							return false;
 						}
@@ -97,7 +97,7 @@ function frmCheck(nv){
 					if(inputChks=="number"){
 					    var NumberChkExp = /[^0-9.]/gi;
 						if(NumberChkExp.test(inputName[x].val())== true ) {
-							alert('¼ıÀÚ¸¸ ÀÔ·ÂÇØÁÖ¼¼¿ä');
+							alert('ìˆ«ìë§Œ ì…ë ¥í•´ì£¼ì„¸ìš”');
 								inputName[x].focus();
 							return false;
 						}
@@ -105,7 +105,7 @@ function frmCheck(nv){
 					if(inputChks=="eng"){
 					    var NumberChkExp = /[^a-zA-Z]/g;;
 						if(NumberChkExp.test(inputName[x].val())== true ) {
-							alert('¿µ¹®¸¸ ÀÔ·ÂÇØÁÖ¼¼¿ä');
+							alert('ì˜ë¬¸ë§Œ ì…ë ¥í•´ì£¼ì„¸ìš”');
 								inputName[x].focus();
 							return false;
 						}
@@ -114,20 +114,20 @@ function frmCheck(nv){
             }else if(inputType=="hidden"){
                 inputValu = inputName[x].val();
                 if(!inputValu ){
-                    alert(inputText+"ÀÇ °ªÀÌ ¾ø½À´Ï´Ù.");
+                    alert(inputText+"ì˜ ê°’ì´ ì—†ìŠµë‹ˆë‹¤.");
                     return false;
                 }
             }else if(inputType=="password"){
                 inputValu = inputName[x].val();
                 if(!inputValu ){
-                        alert(inputText+"¸¦(À») ÀÔ·ÂÇØÁÖ¼¼¿ä");
+                        alert(inputText+"ë¥¼(ì„) ì…ë ¥í•´ì£¼ì„¸ìš”");
                         inputName[x].focus();
                        return false;
                 }else{
                     if(thislimit){
                         var valcnt = inputValu.length;
                         if(thislimit > valcnt){
-                                alert(inputText+"ÀÇ ±ÛÀÚ ¼ö°¡ ÀÛ½À´Ï´Ù.");
+                                alert(inputText+"ì˜ ê¸€ì ìˆ˜ê°€ ì‘ìŠµë‹ˆë‹¤.");
                                 inputName[x].focus();
                                 return false;
                         }
@@ -137,9 +137,9 @@ function frmCheck(nv){
                 inputValu = inputName[x].val();
                 if(!inputValu ){
 					if ( sVal_select[x]==undefined ){
-						alert(inputText+"¸¦(À») ÀÔ·ÂÇØ ÁÖ¼¼¿ä.");
+						alert(inputText+"ë¥¼(ì„) ì…ë ¥í•´ ì£¼ì„¸ìš”.");
 					}else{
-						alert(inputText+"¸¦(À») ¼±ÅÃÇØ ÁÖ¼¼¿ä.");
+						alert(inputText+"ë¥¼(ì„) ì„ íƒí•´ ì£¼ì„¸ìš”.");
 					}
 					inputName[x].focus();
                     return false;
