@@ -3,6 +3,7 @@
  * use: onsubmit="return frmCheck('name,name2');"
  * 제이쿼리 1.x.x 버전이 필요합니다.
  * coding: 2014-07-23 bae jongyoung
+ * https://github.com/bae-jongyoung/frmcheck
  */
 /// onsubmit="return frmCheck('name,name2');"
 function frmCheck(nv){
