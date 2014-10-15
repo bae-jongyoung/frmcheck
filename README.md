@@ -35,3 +35,25 @@ frmcheck
     chk="email"    // 이메일
     chk="number"   // 숫자
     chk="eng"      // 영문
+
+
+
+사용법 1.
+    onsubmit="return frmCheck('name,name2,name2');"
+    
+사용법 2.
+    onsubmit="return frmCheck2('name,name2');"
+    
+    function frmCheck2(nv){
+    
+    	if ($('#agree').prop('checked')==true){
+    		if (frmCheck(nv)==true){
+    			return true;
+    		}else{
+    			return false;
+    		}
+    	}else{
+    		alert ('동의가 필요 합니다.');
+    		return false;
+    	}
+    }
