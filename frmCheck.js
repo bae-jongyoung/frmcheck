@@ -4,8 +4,28 @@
  * 제이쿼리 1.x.x 버전이 필요합니다.
  * coding: 2014-07-23 bae jongyoung
  * https://github.com/bae-jongyoung/frmcheck
- */
-/// onsubmit="return frmCheck('name,name2');"
+ 
+사용법 1:
+	/// onsubmit="return frmCheck('name,name2');"
+
+사용법 2:
+	// onsubmit="return frmCheck2('name,name2');"
+	
+	function frmCheck2(nv){
+	
+		if ($('#agree').prop('checked')==true){
+			if (frmCheck(nv)==true){
+				return true;
+			}else{
+				return false;
+			}
+		}else{
+			alert ('동의가 필요 합니다.');
+			return false;
+		}
+	}
+*/
+
 function frmCheck(nv){
 
     var nameVal = nv.split(",")
