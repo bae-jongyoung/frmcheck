@@ -131,6 +131,14 @@ function frmCheck(nv){
 							return false;
 						}
 					}
+					if(inputChks=="engnum"){
+					    var NumberChkExp = /[^a-zA-Z0-9]/gi;
+						if(NumberChkExp.test(inputName[x].val())== true ) {
+							alert('영문,숫자만 입력해주세요');
+								inputName[x].focus();
+							return false;
+						}
+					}					
 				} ///CHK
             }else if(inputType=="hidden"){
                 inputValu = inputName[x].val();
