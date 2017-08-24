@@ -4,7 +4,7 @@ frmcheck
  * form Check v1.0
  * use: onsubmit="return frmCheck('name,name2');"
  * 제이쿼리 1.x.x 버전이 필요합니다.
- * codding: 2014-07-23 bae jongyoung
+ * coding: 2014-07-23 bae jongyoung
 
 
 사용법 :
