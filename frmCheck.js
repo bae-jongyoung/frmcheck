@@ -51,25 +51,30 @@ function frmCheck(nv){
     var x_cnt = inputName.length;
     for(x=0;x<x_cnt;x++){
 
+	inputPlaceholder = inputName[x].attr('placeholder');
         inputText = inputName[x].attr('title');
         thislimit = inputName[x].attr('txtlimit');
         inputType = inputName[x].attr('type');
         inputChks = inputName[x].attr('chk');
 
 			if (inputText=='' || inputText==undefined){
-				//title 이 없는 경우 name 으로 대치
-				inputText = nameVal[x];
+				if (inputPlaceholder=='' || inputPlaceholder==undefined){
+				//title, placeholder 이 없는 경우 name 으로 대치
+					inputText = nameVal[x];
+				}else{
+					inputText = inputPlaceholder;
+				}
 			}
 
             if(inputType=="radio"){
                  if(!$(":radio[name="+nameVal[x]+"]:checked").val()){
-                    alert(inputText+"를(을) 체크해주세요");
+                    alert(inputText+"을(를) 체크해주세요");
                     return false;
                  }
 
             }else if(inputType=="checkbox"){
                 if($("input:checkbox[name="+nameVal[x]+"]").is(":checked") != true ){
-                    alert(inputText+"를(을) 체크해주세요");
+                    alert(inputText+"을(를) 체크해주세요");
                     return false;
                 }
                 /// 값가져오기 $('input:checkbox [ id="checkbox_id" ]').val();
@@ -78,7 +83,7 @@ function frmCheck(nv){
 
                 inputValu = inputName[x].val();
                 if(!inputValu ){
-                        alert(inputText+"를(을) 입력해주세요");
+                        alert(inputText+"을(를) 입력해주세요");
                         inputName[x].focus();
                        return false;
                 }else{
@@ -149,7 +154,7 @@ function frmCheck(nv){
             }else if(inputType=="password"){
                 inputValu = inputName[x].val();
                 if(!inputValu ){
-                        alert(inputText+"를(을) 입력해주세요");
+                        alert(inputText+"을(를) 입력해주세요");
                         inputName[x].focus();
                        return false;
                 }else{
@@ -166,9 +171,9 @@ function frmCheck(nv){
                 inputValu = inputName[x].val();
                 if(!inputValu ){
 					if ( sVal_select[x]==undefined ){
-						alert(inputText+"를(을) 입력해 주세요.");
+						alert(inputText+"을(를) 입력해 주세요.");
 					}else{
-						alert(inputText+"를(을) 선택해 주세요.");
+						alert(inputText+"을(를) 선택해 주세요.");
 					}
 					inputName[x].focus();
                     return false;
