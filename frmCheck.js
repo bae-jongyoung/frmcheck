@@ -59,7 +59,7 @@ function frmCheck(nv){
 
 			if (inputText=='' || inputText==undefined){
 				if (inputPlaceholder=='' || inputPlaceholder==undefined){
-				//title, placeholder 이 없는 경우 name 으로 대치
+					//title, placeholder 이 없는 경우 name 으로 대치
 					inputText = nameVal[x];
 				}else{
 					inputText = inputPlaceholder;
