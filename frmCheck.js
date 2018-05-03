@@ -1,5 +1,5 @@
 /*
- * form Check v1.1
+ * form Check v1.2
  * use: onsubmit="return frmCheck('name,name2');"
  * 제이쿼리 1.x.x 버전이 필요합니다.
  * coding: 2014-07-23 bae jongyoung
@@ -57,7 +57,7 @@ function frmCheck(nv){
 	if (inputName[x]=="array"){
 		inputPlaceholder = $("input[name*="+nameVal[x]+"]").attr('placeholder');
 		inputText = $("input[name*="+nameVal[x]+"]").attr('title');
-		inputType = $("input[name*="+nameVal[n]+"]").attr('type');
+		inputType = $("input[name*="+nameVal[x]+"]").attr('type');
 	}else{
 		inputPlaceholder = inputName[x].attr('placeholder');
 		inputText = inputName[x].attr('title');
@@ -81,10 +81,26 @@ function frmCheck(nv){
                  }
 
             }else if(inputType=="checkbox"){
-                if($("input:checkbox[name="+nameVal[x]+"]").is(":checked") != true ){
-                    alert(inputText+"을(를) 체크해주세요");
-                    return false;
-                }
+
+	 	if (inputName[x]=="array"){
+			inputValue = "";
+
+			$("input[name*="+nameVal[x]+"]").each(function(){
+				if ($(this).prop('checked')==true){
+				    inputValue = inputValue +""+ $(this).val();
+				}
+			});
+			if(!inputValue ){
+				alert(inputText+"을(를) 체크해주세요");
+				return false;
+			}
+		}else{
+			if($("input:checkbox[name="+nameVal[x]+"]").is(":checked") != true ){
+			    alert(inputText+"을(를) 체크해주세요");
+			    return false;
+			}
+		}
+
                 /// 값가져오기 $('input:checkbox [ id="checkbox_id" ]').val();
 
             }else if(inputType=="text"){
