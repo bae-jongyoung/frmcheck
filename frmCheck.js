@@ -1,5 +1,5 @@
 /*
- * form Check v1.0
+ * form Check v1.1
  * use: onsubmit="return frmCheck('name,name2');"
  * 제이쿼리 1.x.x 버전이 필요합니다.
  * coding: 2014-07-23 bae jongyoung
@@ -30,7 +30,7 @@ function frmCheck(nv){
     var nameVal = nv.split(",")
     var inputName = new Array();
     var sVal_select = new Array();
-    var inputText,thislimit,inputValu;
+    var inputText,thislimit,inputValue;
     var n_cnt = nameVal.length;
     for(n=0;n<n_cnt;n++){
 
@@ -39,6 +39,10 @@ function frmCheck(nv){
 			sVal_select[n] = $("select[name="+nameVal[n]+"]").val();
 			if ( sVal_select[n]==undefined ){
 				inputName[n] = $("textarea[name="+nameVal[n]+"]");
+				if(inputName[n].val()==undefined){
+					// 
+					inputName[n] = "array";
+				}
 			}else{
 				inputName[n] = $("select[name="+nameVal[n]+"]");
 			}
@@ -50,12 +54,17 @@ function frmCheck(nv){
     var x_cnt = inputName.length;
     for(x=0;x<x_cnt;x++){
 
-	inputPlaceholder = inputName[x].attr('placeholder');
-        inputText = inputName[x].attr('title');
-        thislimit = inputName[x].attr('txtlimit');
-        inputType = inputName[x].attr('type');
-        inputChks = inputName[x].attr('chk');
-
+	if (inputName[x]=="array"){
+		inputPlaceholder = $("input[name*="+nameVal[x]+"]").attr('placeholder');
+		inputText = $("input[name*="+nameVal[x]+"]").attr('title');
+		inputType = $("input[name*="+nameVal[n]+"]").attr('type');
+	}else{
+		inputPlaceholder = inputName[x].attr('placeholder');
+		inputText = inputName[x].attr('title');
+		thislimit = inputName[x].attr('txtlimit');
+		inputType = inputName[x].attr('type');
+		inputChks = inputName[x].attr('chk');
+	}
 			if (inputText=='' || inputText==undefined){
 				if (inputPlaceholder=='' || inputPlaceholder==undefined){
 					//title, placeholder 이 없는 경우 name 으로 대치
@@ -80,14 +89,14 @@ function frmCheck(nv){
 
             }else if(inputType=="text"){
 
-                inputValu = inputName[x].val();
-                if(!inputValu ){
+                inputValue = inputName[x].val();
+                if(!inputValue ){
                         alert(inputText+"을(를) 입력해주세요");
                         inputName[x].focus();
                        return false;
                 }else{
                     if(thislimit){ ///txtlimit='n'
-                        var valcnt = inputValu.length;
+                        var valcnt = inputValue.length;
                         if(thislimit > valcnt){
                                 alert(inputText+"의 글자 수가 작습니다.");
                                 inputName[x].focus();
@@ -98,12 +107,12 @@ function frmCheck(nv){
 
 				if(inputChks){
 					if(inputChks=="idcheck"){
-						  if(inputValu < 5 || inputValu > 15) {
+						  if(inputValue < 5 || inputValue > 15) {
 							 alert("아이디는 5 ~ 15자의 영문 소문자나 숫자 또는 조합된 문자열이어야 합니다!");
 							 return false;
 						  }
-						  for(var i = 0; i < inputValu.length; i++) {
-							 var chr = inputValu.substr(i,1);
+						  for(var i = 0; i < inputValue.length; i++) {
+							 var chr = inputValue.substr(i,1);
 							 if((chr < '0' || chr > '9') && (chr < 'a' || chr > 'z')) {
 								alert("아이디는 영문 소문자나 숫자 또는 조합된 문자열이어야 합니다!");
 								return false;
@@ -145,20 +154,20 @@ function frmCheck(nv){
 					}					
 				} ///CHK
             }else if(inputType=="hidden"){
-                inputValu = inputName[x].val();
-                if(!inputValu ){
+                inputValue = inputName[x].val();
+                if(!inputValue ){
                     alert(inputText+"을(를) 학인 해주세요.");
                     return false;
                 }
             }else if(inputType=="password"){
-                inputValu = inputName[x].val();
-                if(!inputValu ){
+                inputValue = inputName[x].val();
+                if(!inputValue ){
                         alert(inputText+"을(를) 입력해주세요");
                         inputName[x].focus();
                        return false;
                 }else{
                     if(thislimit){
-                        var valcnt = inputValu.length;
+                        var valcnt = inputValue.length;
                         if(thislimit > valcnt){
                                 alert(inputText+"의 글자 수가 작습니다.");
                                 inputName[x].focus();
@@ -167,8 +176,19 @@ function frmCheck(nv){
                     }
                 }
             }else{ ///select
-                inputValu = inputName[x].val();
-                if(!inputValu ){
+	 	if (inputName[x]=="array"){
+			inputValue = "";
+
+			$("input[name*="+nameVal[x]+"]").each(function(){
+				if ($(this).prop('checked')==true){
+				    inputValue = inputValue +""+ $(this).val();
+				}
+			});
+		}else{
+			inputValue = inputName[x].val();
+		}
+
+		if(!inputValue ){
 					if ( sVal_select[x]==undefined ){
 						alert(inputText+"을(를) 입력해 주세요.");
 					}else{
