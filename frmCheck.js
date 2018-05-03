@@ -148,7 +148,7 @@ function frmCheck(nv){
             }else if(inputType=="hidden"){
                 inputValu = inputName[x].val();
                 if(!inputValu ){
-                    alert(inputText+"의 값이 없습니다.");
+                    alert(inputText+"의 학인 값이 없습니다.");
                     return false;
                 }
             }else if(inputType=="password"){
