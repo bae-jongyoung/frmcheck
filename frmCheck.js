@@ -7,7 +7,6 @@
  
 사용법 1:
 	/// onsubmit="return frmCheck('name,name2');"
-
 사용법 2:
 	// onsubmit="return frmCheck2('name,name2');"
 	
@@ -148,7 +147,7 @@ function frmCheck(nv){
             }else if(inputType=="hidden"){
                 inputValu = inputName[x].val();
                 if(!inputValu ){
-                    alert(inputText+"의 학인 값이 없습니다.");
+                    alert(inputText+"을(를) 학인 해주세요.");
                     return false;
                 }
             }else if(inputType=="password"){
