@@ -1,7 +1,7 @@
 frmcheck
 ========
 
- * form Check v1.1
+ * form Check v1.2
  * use: onsubmit="return frmCheck('name,name2');"
  * 제이쿼리 1.x.x 버전이 필요합니다.
  * coding: 2014-07-23 bae jongyoung
