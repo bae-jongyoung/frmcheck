@@ -1,7 +1,7 @@
 frmcheck
 ========
 
- * form Check v1.0
+ * form Check v1.1
  * use: onsubmit="return frmCheck('name,name2');"
  * 제이쿼리 1.x.x 버전이 필요합니다.
  * coding: 2014-07-23 bae jongyoung
@@ -11,6 +11,7 @@ frmcheck
 
 필수 입력채크를 하려는 곳의 name를 적어 주면됩니다.
 각 인풋에 있는 title 을 이용하여 알럿을 띄워 줍니다.
+title 값이 없으면 placeholder 값을 확인해서 
     
     <form method="post" action="?" onsubmit="return frmCheck('name,name2,name2');">
       <input type="text" name="name" title="이름" txtlimit='4' chk="eng">
